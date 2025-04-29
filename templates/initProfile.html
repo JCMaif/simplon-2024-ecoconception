@@ -1,0 +1,19 @@
+{{template "layout-start" .}}
+<h2>Complétez vos adresses</h2>
+<p>Pour accéder à l'application, vous devez renseigner à la fois votre adresse de domicile et votre adresse de
+  travail.<br>
+  Cela permet d'assurer la sécurité et la pertinence des trajets proposés.</p>
+<form id="address-form-blocked" method="post" action="/address">
+  <div style="position:relative;">
+    <input id="home-input" name="home" placeholder="Adresse domicile" value="{{.User.HomeAddress}}" autocomplete="off"
+      required />
+    <ul id="home-suggestions" class="autocomplete-list"></ul>
+  </div>
+  <div style="position:relative;">
+    <input id="work-input" name="work" placeholder="Adresse travail" value="{{.User.WorkAddress}}" autocomplete="off"
+      required />
+    <ul id="work-suggestions" class="autocomplete-list"></ul>
+  </div>
+  <button type="submit">Valider mes adresses</button>
+</form>
+{{template "layout-end" .}}

@@ -1,0 +1,13 @@
+{{template "layout-start" .}}
+<h2>Inscription</h2>
+<form id="register-form" method="post">
+  <input name="prenom" placeholder="Prénom" required />
+  <input name="nom" placeholder="Nom" required />
+  <input name="email" type="email" placeholder="Email" required />
+  <input name="password" type="password" placeholder="Password" required />
+  <input name="tel" placeholder="Téléphone" required />
+  <input name="photo" type="file" accept="image/*" />
+  <button type="submit">S'inscrire</button>
+  <a href="/login">Déjà inscrit ?</a>
+</form>
+{{template "layout-end" .}}

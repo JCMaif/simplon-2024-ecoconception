@@ -1,0 +1,13 @@
+{{template "layout-end" .}}
+<h2>Nouveau trajet</h2>
+<form id="trip-form">
+    <input id="from-input" name="from" value="${from}" readonly />
+    <input id="to-input" name="to" value="${to}" readonly />
+    <button type="button" id="swap-btn">Permuter</button>
+    <input name="date" type="date" required />
+    <input name="time" type="time" required />
+    <input name="video" type="url" placeholder="Lien vidéo YouTube (optionnel)" />
+    <button type="submit">Valider le trajet</button>
+</form>
+<button onclick="renderProfile()">Retour</button>
+{{template "layout-end" .}}
