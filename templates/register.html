@@ -1,6 +1,15 @@
 {{template "layout-start" .}}
 <h2>Inscription</h2>
-<form id="register-form" method="post">
+
+<div id="register-response"></div>
+
+<form 
+  id="register-form"
+  hx-post="/register"
+  hx-target="#register-response"
+  hx-swap="innerHTML"
+  enctype="multipart/form-data"
+>
   <input name="prenom" placeholder="Prénom" required />
   <input name="nom" placeholder="Nom" required />
   <input name="email" type="email" placeholder="Email" required />

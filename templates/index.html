@@ -1,23 +1,65 @@
 {{template "layout-start" .}}
 <h2>Bienvenue, {{.User.Firstname}} {{.User.Lastname}}</h2>
-{{with .User.Picture }} <img src="{{.User.Picture}}" class="profile-pic" /> {{ end }}
-<p>Email : {{.User.Email}}<br>Tél : {{.User.Phone}}</p>
-<form id="address-form">
-  <div style="position:relative;">
-    <input id="home-input" name="home" placeholder="Adresse domicile" value="{{.User.HomeAddress}}" autocomplete="off"
-      required />
+{{with .User.Picture }} <img src="{{.User.Picture}}" class="profile-pic" /> {{
+end }}
+<p>Email : {{.User.Email}}<br />Tél : {{.User.Phone}}</p>
+<form
+  id="address-form"
+  hx-post="/user/update-address"
+  hx-target="#app"
+  hx-swap="outerHTML"
+>
+  <div style="position: relative">
+    <input
+      id="home-input"
+      name="home"
+      placeholder="Adresse domicile"
+      value="{{.User.HomeAddress}}"
+      autocomplete="off"
+      required
+    />
     <ul id="home-suggestions" class="autocomplete-list"></ul>
   </div>
-  <div style="position:relative;">
-    <input id="work-input" name="work" placeholder="Adresse travail" value="{{.User.WorkAddress}}" autocomplete="off"
-      required />
+  <div style="position: relative">
+    <input
+      id="work-input"
+      name="work"
+      placeholder="Adresse travail"
+      value="{{.User.WorkAddress}}"
+      autocomplete="off"
+      required
+    />
     <ul id="work-suggestions" class="autocomplete-list"></ul>
   </div>
   <button type="submit">Valider mes adresses</button>
 </form>
-<button id="add-trip">Ajouter un trajet</button>
-<button id="show-history">Voir mon historique</button>
-<button id="show-map">Carte des trajets</button>
-<button id="show-profile">Mon profil public</button>
+<button 
+  id="add-trip"
+  hx-get="/trip/add"
+  hx-target="#app"
+  hx-swap="outerHTML"
+>Ajouter un trajet</button>
+
+<button 
+  id="show-history"
+  hx-get="/trip/history"
+  hx-target="#app"
+  hx-swap="outerHTML"
+>Voir mon historique</button>
+
+<button 
+  id="show-map"
+  hx-get="/map"
+  hx-target="#app"
+  hx-swap="outerHTML"
+>Carte des trajets</button>
+
+<button 
+  id="show-profile"
+  hx-get="/user/public-profile"
+  hx-target="#app"
+  hx-swap="outerHTML"
+>Mon profil public</button>
+
 <button onclick="window.location.href = '/logout'">Déconnexion</button>
 {{template "layout-end" .}}

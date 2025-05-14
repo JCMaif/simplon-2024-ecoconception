@@ -148,6 +148,7 @@ func main() {
 	r.HandleFunc("/logout", logout).Methods("GET")
 	r.HandleFunc("/address", setAdresses).Methods("POST")
 
-	r.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("static/"))))
+	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static/"))))
+
 	http.ListenAndServe(":8080", r)
 }
